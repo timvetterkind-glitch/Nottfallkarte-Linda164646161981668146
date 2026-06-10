@@ -37,7 +37,7 @@ const daten = {
   kontakt3TelefonAnzeige: "+49 160 90660116",
   kontakt3TelefonLink: "+4916090660116",
 
-  fotoDatei: "tim.jpg"
+  fotoDatei: "linda.jpg"
 };
 </script>
 
@@ -46,28 +46,29 @@ const daten = {
 
 body{
   margin:0;
-  padding:18px;
+  padding:12px;
   font-family:Arial, Helvetica, sans-serif;
-  background:#eeeeee;
+  background:#eee;
   color:#000;
 }
 
 .card{
-  max-width:1250px;
+  width:100%;
+  max-width:980px;
   margin:auto;
   background:#fff;
-  border-radius:24px;
+  border-radius:20px;
   overflow:hidden;
   display:grid;
-  grid-template-columns:220px 1fr;
-  box-shadow:0 8px 30px rgba(0,0,0,.18);
+  grid-template-columns:150px 1fr;
+  box-shadow:0 8px 25px rgba(0,0,0,.18);
   border:1px solid #ddd;
 }
 
 .sidebar{
-  background:#e00000;
+  background:#d80000;
   color:#fff;
-  padding:28px 18px;
+  padding:18px 10px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -75,9 +76,9 @@ body{
 }
 
 .cross{
-  width:135px;
-  height:135px;
-  border:6px solid #fff;
+  width:92px;
+  height:92px;
+  border:5px solid #fff;
   border-radius:50%;
   position:relative;
 }
@@ -93,82 +94,83 @@ body{
   border-radius:2px;
 }
 
-.cross:before{width:75px;height:28px}
-.cross:after{width:28px;height:75px}
+.cross:before{width:52px;height:20px}
+.cross:after{width:20px;height:52px}
 
 .vertical-title{
   writing-mode:vertical-rl;
   transform:rotate(180deg);
-  font-size:46px;
+  font-size:34px;
   font-weight:900;
-  letter-spacing:2px;
+  letter-spacing:1px;
 }
 
 .side-text{
   writing-mode:vertical-rl;
   transform:rotate(180deg);
-  font-size:17px;
+  font-size:12px;
   font-weight:700;
-  line-height:1.5;
+  line-height:1.35;
   text-align:center;
 }
 
 .heart{
-  font-size:68px;
+  font-size:42px;
   font-weight:900;
 }
 
 .main{
-  padding:32px 34px 0;
+  padding:24px 24px 0;
+  min-width:0;
 }
 
 .top{
   display:grid;
-  grid-template-columns:1fr 280px;
-  gap:28px;
+  grid-template-columns:1fr 190px;
+  gap:18px;
   align-items:start;
 }
 
 .alert{
-  color:#d60000;
-  font-size:25px;
+  color:#c90000;
+  font-size:19px;
   font-weight:900;
-  letter-spacing:.5px;
-  margin-bottom:22px;
+  margin-bottom:16px;
+  text-transform:uppercase;
 }
 
 .name{
-  font-size:58px;
+  font-size:42px;
   font-weight:950;
   line-height:1;
-  margin-bottom:22px;
+  margin-bottom:16px;
   text-transform:uppercase;
 }
 
 .birth{
-  font-size:26px;
+  font-size:20px;
   font-weight:800;
-  margin-bottom:26px;
+  margin-bottom:20px;
 }
 
 .birth span{
-  color:#d60000;
-  font-size:36px;
-  margin-left:10px;
+  color:#c90000;
+  font-size:25px;
+  margin-left:8px;
 }
 
 .photo{
-  width:280px;
-  height:335px;
-  border-radius:14px;
-  border:3px solid #d60000;
-  background:#ddd;
+  width:190px;
+  height:245px;
+  border-radius:12px;
+  border:3px solid #c90000;
+  background:#f2f2f2;
   overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  font-size:22px;
+  font-size:18px;
   font-weight:900;
   color:#555;
 }
@@ -181,222 +183,266 @@ body{
 
 .medgrid{
   display:grid;
-  grid-template-columns:1.1fr 1fr 1fr;
-  border:2px solid #e00000;
-  border-radius:14px;
+  grid-template-columns:1fr 1fr 1fr;
+  border:2px solid #d80000;
+  border-radius:12px;
   overflow:hidden;
-  margin-bottom:26px;
+  margin-bottom:18px;
 }
 
 .meditem{
-  padding:20px;
-  min-height:112px;
+  padding:14px;
+  min-height:82px;
   display:flex;
   align-items:center;
-  gap:18px;
-  border-right:2px solid #e00000;
+  gap:10px;
+  border-right:2px solid #d80000;
 }
 
 .meditem:last-child{border-right:none}
 
 .meditem.red{
-  background:#e00000;
+  background:#d80000;
   color:#fff;
 }
 
 .icon{
-  font-size:46px;
+  font-size:32px;
   font-weight:900;
 }
 
 .label{
-  font-size:19px;
+  font-size:14px;
   font-weight:900;
+  text-transform:uppercase;
 }
 
 .value{
-  font-size:43px;
+  font-size:30px;
   font-weight:950;
   line-height:1;
 }
 
 .info-strip{
   display:grid;
-  grid-template-columns:1fr 1.2fr 1.1fr 1.1fr;
+  grid-template-columns:1fr 1fr;
   border:1px solid #bbb;
-  border-radius:14px;
+  border-radius:12px;
   overflow:hidden;
-  margin-bottom:22px;
+  margin-bottom:18px;
 }
 
 .info-box{
-  padding:22px;
+  padding:15px;
   display:grid;
-  grid-template-columns:54px 1fr;
-  gap:16px;
+  grid-template-columns:38px 1fr;
+  gap:10px;
   align-items:center;
   border-right:1px solid #ccc;
+  border-bottom:1px solid #ccc;
 }
 
-.info-box:last-child{border-right:none}
+.info-box:nth-child(2),
+.info-box:nth-child(4){
+  border-right:none;
+}
+
+.info-box:nth-child(3),
+.info-box:nth-child(4){
+  border-bottom:none;
+}
 
 .info-icon{
-  color:#d60000;
-  font-size:42px;
+  color:#d80000;
+  font-size:30px;
   text-align:center;
 }
 
 .info-title{
-  font-size:21px;
+  font-size:16px;
   font-weight:950;
   text-transform:uppercase;
 }
 
 .info-value{
-  font-size:22px;
+  font-size:17px;
   font-weight:800;
-  margin-top:8px;
+  margin-top:5px;
   line-height:1.25;
 }
 
 .ja{
-  color:#d60000;
-  font-size:25px;
+  color:#d80000;
+  font-size:22px;
   font-weight:950;
 }
 
 .contacts{
   display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:18px;
-  margin-bottom:26px;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin-bottom:18px;
 }
 
 .contact-card{
   border:1px solid #aaa;
-  border-radius:14px;
-  padding:20px;
+  border-radius:12px;
+  padding:14px;
   background:#fff;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:12px;
+  align-items:center;
 }
 
 .person{
   display:flex;
-  gap:15px;
-  align-items:flex-start;
-  margin-bottom:16px;
+  gap:12px;
+  align-items:center;
 }
 
 .person-icon{
-  background:#e00000;
+  background:#d80000;
   color:#fff;
-  width:58px;
-  height:58px;
+  width:48px;
+  height:48px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:34px;
+  font-size:28px;
+  flex-shrink:0;
 }
 
 .person-name{
-  font-size:24px;
+  font-size:21px;
   font-weight:950;
   text-transform:uppercase;
 }
 
 .role{
-  color:#d60000;
-  font-size:17px;
+  color:#d80000;
+  font-size:14px;
   font-weight:900;
-  margin-top:5px;
+  margin-top:3px;
 }
 
 .phone{
-  font-size:25px;
+  font-size:21px;
   font-weight:950;
-  margin:18px 0;
+  white-space:nowrap;
 }
 
 .call{
   display:block;
-  background:#e00000;
+  background:#d80000;
   color:#fff;
   text-decoration:none;
   text-align:center;
-  padding:14px;
-  border-radius:9px;
-  font-size:21px;
+  padding:11px 20px;
+  border-radius:8px;
+  font-size:17px;
   font-weight:950;
+  white-space:nowrap;
 }
 
 .footer{
   display:grid;
-  grid-template-columns:1fr 430px;
-  margin:0 -34px;
+  grid-template-columns:1fr 320px;
+  margin:0 -24px;
 }
 
 .footer-left{
   background:#000;
   color:#fff;
-  padding:20px 34px;
-  font-size:18px;
+  padding:15px 24px;
+  font-size:14px;
   font-weight:700;
 }
 
 .footer-right{
-  background:#e00000;
+  background:#d80000;
   color:#fff;
-  padding:20px 34px;
-  font-size:20px;
+  padding:15px 24px;
+  font-size:15px;
   font-weight:900;
 }
 
-@media(max-width:900px){
+@media(max-width:800px){
   body{padding:8px}
 
-  .card{grid-template-columns:1fr}
+  .card{
+    grid-template-columns:1fr;
+  }
 
-  .sidebar{display:none}
+  .sidebar{
+    display:none;
+  }
 
-  .main{padding:18px 14px 0}
+  .main{
+    padding:16px 12px 0;
+  }
 
-  .top{grid-template-columns:1fr}
+  .top{
+    grid-template-columns:1fr;
+  }
 
-  .name{font-size:38px}
+  .name{
+    font-size:34px;
+  }
 
-  .alert{font-size:20px}
+  .alert{
+    font-size:17px;
+  }
 
-  .birth{font-size:22px}
+  .birth{
+    font-size:18px;
+  }
 
-  .birth span{font-size:28px}
+  .birth span{
+    font-size:23px;
+  }
 
   .photo{
     width:100%;
-    height:360px;
+    height:330px;
   }
 
   .medgrid,
   .info-strip,
-  .contacts,
   .footer{
     grid-template-columns:1fr;
   }
 
   .meditem{
     border-right:none;
-    border-bottom:2px solid #e00000;
+    border-bottom:2px solid #d80000;
   }
 
-  .meditem:last-child{border-bottom:none}
+  .meditem:last-child{
+    border-bottom:none;
+  }
 
   .info-box{
-    border-right:none;
-    border-bottom:1px solid #ccc;
+    border-right:none !important;
+    border-bottom:1px solid #ccc !important;
   }
 
-  .info-box:last-child{border-bottom:none}
+  .info-box:last-child{
+    border-bottom:none !important;
+  }
 
-  .footer{margin:0 -14px}
+  .contact-card{
+    grid-template-columns:1fr;
+  }
+
+  .phone{
+    white-space:normal;
+  }
+
+  .footer{
+    margin:0 -12px;
+  }
 }
 </style>
 </head>
@@ -428,7 +474,7 @@ body{
           <div class="meditem red">
             <div class="icon">💧</div>
             <div>
-              <div class="label">BLUTGRUPPE</div>
+              <div class="label">Blutgruppe</div>
               <div class="value" id="blutgruppe"></div>
             </div>
           </div>
@@ -436,7 +482,7 @@ body{
           <div class="meditem">
             <div class="icon">💊</div>
             <div>
-              <div class="label">ALLERGIEN</div>
+              <div class="label">Allergien</div>
               <div class="value" id="allergien"></div>
             </div>
           </div>
@@ -444,16 +490,14 @@ body{
           <div class="meditem">
             <div class="icon">▣</div>
             <div>
-              <div class="label">MEDIKAMENTE</div>
+              <div class="label">Medikamente</div>
               <div class="value" id="medikamente"></div>
             </div>
           </div>
         </section>
       </div>
 
-      <div class="photo" id="fotoBox">
-        FOTO<br>HIER
-      </div>
+      <div class="photo" id="fotoBox">FOTO<br>HIER</div>
     </section>
 
     <section class="info-strip">
@@ -539,11 +583,9 @@ body{
 <script>
 document.getElementById("name").textContent = daten.name;
 document.getElementById("geburtsdatum").textContent = daten.geburtsdatum;
-
 document.getElementById("blutgruppe").textContent = daten.blutgruppe;
 document.getElementById("allergien").textContent = daten.allergien;
 document.getElementById("medikamente").textContent = daten.medikamente;
-
 document.getElementById("krankenkasse").textContent = daten.krankenkasse;
 
 document.getElementById("wohnadresse").innerHTML =
@@ -569,7 +611,7 @@ document.getElementById("kontakt3Rolle").textContent = "(" + daten.kontakt3Rolle
 document.getElementById("kontakt3TelefonAnzeige").textContent = "☎ " + daten.kontakt3TelefonAnzeige;
 document.getElementById("kontakt3Link").href = "tel:" + daten.kontakt3TelefonLink;
 
-if (daten.fotoDatei && daten.fotoDatei.trim() !== "") {
+if(daten.fotoDatei && daten.fotoDatei.trim() !== ""){
   document.getElementById("fotoBox").innerHTML =
     '<img src="' + daten.fotoDatei + '" alt="Foto">';
 }
