@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notfallkarte</title>
+
+<script>
+const daten = {
+  name: "LINDA HENKE",
+  geburtsdatum: "09.01.2003",
+
+  blutgruppe: "A+",
+  allergien: "KEINE",
+  medikamente: "KEINE",
+
+  krankenkasse: "SANITAS",
+  wohnadresse1: "Glasiweg 10",
+  wohnadresse2: "6242 Wauwil",
+  wohnadresse3: "Schweiz",
+
+  regaGoenner: "JA",
+  organspender: "JA",
+
+  kontakt1Name: "TIM RENE VETTERKIND",
+  kontakt1Rolle: "EHEPARTNER",
+  kontakt1TelefonAnzeige: "+41 79 610 61 43",
+  kontakt1TelefonLink: "+41796106143",
+
+  kontakt2Name: "MANUELA SCHANTZ",
+  kontakt2Rolle: "MUTTER",
+  kontakt2TelefonAnzeige: "+49 160 90660116",
+  kontakt2TelefonLink: "+4916090660116",
+
+  kontakt3Name: "KIM HENKE",
+  kontakt3Rolle: "SCHWESTER",
+  kontakt3TelefonAnzeige: "+49 160 90660116",
+  kontakt3TelefonLink: "+4916090660116",
+
+  fotoDatei: "tim.jpg"
+};
+</script>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  padding:18px;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#eeeeee;
+  color:#000;
+}
+
+.card{
+  max-width:1250px;
+  margin:auto;
+  background:#fff;
+  border-radius:24px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:220px 1fr;
+  box-shadow:0 8px 30px rgba(0,0,0,.18);
+  border:1px solid #ddd;
+}
+
+.sidebar{
+  background:#e00000;
+  color:#fff;
+  padding:28px 18px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-around;
+}
+
+.cross{
+  width:135px;
+  height:135px;
+  border:6px solid #fff;
+  border-radius:50%;
+  position:relative;
+}
+
+.cross:before,
+.cross:after{
+  content:"";
+  position:absolute;
+  background:#fff;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  border-radius:2px;
+}
+
+.cross:before{width:75px;height:28px}
+.cross:after{width:28px;height:75px}
+
+.vertical-title{
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-size:46px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.side-text{
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-size:17px;
+  font-weight:700;
+  line-height:1.5;
+  text-align:center;
+}
+
+.heart{
+  font-size:68px;
+  font-weight:900;
+}
+
+.main{
+  padding:32px 34px 0;
+}
+
+.top{
+  display:grid;
+  grid-template-columns:1fr 280px;
+  gap:28px;
+  align-items:start;
+}
+
+.alert{
+  color:#d60000;
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:.5px;
+  margin-bottom:22px;
+}
+
+.name{
+  font-size:58px;
+  font-weight:950;
+  line-height:1;
+  margin-bottom:22px;
+  text-transform:uppercase;
+}
+
+.birth{
+  font-size:26px;
+  font-weight:800;
+  margin-bottom:26px;
+}
+
+.birth span{
+  color:#d60000;
+  font-size:36px;
+  margin-left:10px;
+}
+
+.photo{
+  width:280px;
+  height:335px;
+  border-radius:14px;
+  border:3px solid #d60000;
+  background:#ddd;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:22px;
+  font-weight:900;
+  color:#555;
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.medgrid{
+  display:grid;
+  grid-template-columns:1.1fr 1fr 1fr;
+  border:2px solid #e00000;
+  border-radius:14px;
+  overflow:hidden;
+  margin-bottom:26px;
+}
+
+.meditem{
+  padding:20px;
+  min-height:112px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  border-right:2px solid #e00000;
+}
+
+.meditem:last-child{border-right:none}
+
+.meditem.red{
+  background:#e00000;
+  color:#fff;
+}
+
+.icon{
+  font-size:46px;
+  font-weight:900;
+}
+
+.label{
+  font-size:19px;
+  font-weight:900;
+}
+
+.value{
+  font-size:43px;
+  font-weight:950;
+  line-height:1;
+}
+
+.info-strip{
+  display:grid;
+  grid-template-columns:1fr 1.2fr 1.1fr 1.1fr;
+  border:1px solid #bbb;
+  border-radius:14px;
+  overflow:hidden;
+  margin-bottom:22px;
+}
+
+.info-box{
+  padding:22px;
+  display:grid;
+  grid-template-columns:54px 1fr;
+  gap:16px;
+  align-items:center;
+  border-right:1px solid #ccc;
+}
+
+.info-box:last-child{border-right:none}
+
+.info-icon{
+  color:#d60000;
+  font-size:42px;
+  text-align:center;
+}
+
+.info-title{
+  font-size:21px;
+  font-weight:950;
+  text-transform:uppercase;
+}
+
+.info-value{
+  font-size:22px;
+  font-weight:800;
+  margin-top:8px;
+  line-height:1.25;
+}
+
+.ja{
+  color:#d60000;
+  font-size:25px;
+  font-weight:950;
+}
+
+.contacts{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:18px;
+  margin-bottom:26px;
+}
+
+.contact-card{
+  border:1px solid #aaa;
+  border-radius:14px;
+  padding:20px;
+  background:#fff;
+}
+
+.person{
+  display:flex;
+  gap:15px;
+  align-items:flex-start;
+  margin-bottom:16px;
+}
+
+.person-icon{
+  background:#e00000;
+  color:#fff;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+}
+
+.person-name{
+  font-size:24px;
+  font-weight:950;
+  text-transform:uppercase;
+}
+
+.role{
+  color:#d60000;
+  font-size:17px;
+  font-weight:900;
+  margin-top:5px;
+}
+
+.phone{
+  font-size:25px;
+  font-weight:950;
+  margin:18px 0;
+}
+
+.call{
+  display:block;
+  background:#e00000;
+  color:#fff;
+  text-decoration:none;
+  text-align:center;
+  padding:14px;
+  border-radius:9px;
+  font-size:21px;
+  font-weight:950;
+}
+
+.footer{
+  display:grid;
+  grid-template-columns:1fr 430px;
+  margin:0 -34px;
+}
+
+.footer-left{
+  background:#000;
+  color:#fff;
+  padding:20px 34px;
+  font-size:18px;
+  font-weight:700;
+}
+
+.footer-right{
+  background:#e00000;
+  color:#fff;
+  padding:20px 34px;
+  font-size:20px;
+  font-weight:900;
+}
+
+@media(max-width:900px){
+  body{padding:8px}
+
+  .card{grid-template-columns:1fr}
+
+  .sidebar{display:none}
+
+  .main{padding:18px 14px 0}
+
+  .top{grid-template-columns:1fr}
+
+  .name{font-size:38px}
+
+  .alert{font-size:20px}
+
+  .birth{font-size:22px}
+
+  .birth span{font-size:28px}
+
+  .photo{
+    width:100%;
+    height:360px;
+  }
+
+  .medgrid,
+  .info-strip,
+  .contacts,
+  .footer{
+    grid-template-columns:1fr;
+  }
+
+  .meditem{
+    border-right:none;
+    border-bottom:2px solid #e00000;
+  }
+
+  .meditem:last-child{border-bottom:none}
+
+  .info-box{
+    border-right:none;
+    border-bottom:1px solid #ccc;
+  }
+
+  .info-box:last-child{border-bottom:none}
+
+  .footer{margin:0 -14px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <aside class="sidebar">
+    <div class="cross"></div>
+    <div class="vertical-title">NOTFALLKONTAKT</div>
+    <div class="side-text">
+      Im Notfall diese Karte verwenden<br>
+      In an emergency use this card<br>
+      En cas d'urgence utilisez cette carte
+    </div>
+    <div class="heart">♡</div>
+  </aside>
+
+  <main class="main">
+
+    <section class="top">
+      <div>
+        <div class="alert">WICHTIG! IM NOTFALL BITTE SOFORT KONTAKTIEREN!</div>
+        <div class="name" id="name"></div>
+        <div class="birth">📅 GEBURTSDATUM: <span id="geburtsdatum"></span></div>
+
+        <section class="medgrid">
+          <div class="meditem red">
+            <div class="icon">💧</div>
+            <div>
+              <div class="label">BLUTGRUPPE</div>
+              <div class="value" id="blutgruppe"></div>
+            </div>
+          </div>
+
+          <div class="meditem">
+            <div class="icon">💊</div>
+            <div>
+              <div class="label">ALLERGIEN</div>
+              <div class="value" id="allergien"></div>
+            </div>
+          </div>
+
+          <div class="meditem">
+            <div class="icon">▣</div>
+            <div>
+              <div class="label">MEDIKAMENTE</div>
+              <div class="value" id="medikamente"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="photo" id="fotoBox">
+        FOTO<br>HIER
+      </div>
+    </section>
+
+    <section class="info-strip">
+      <div class="info-box">
+        <div class="info-icon">✚</div>
+        <div>
+          <div class="info-title">Krankenkasse</div>
+          <div class="info-value" id="krankenkasse"></div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="info-icon">⌂</div>
+        <div>
+          <div class="info-title">Wohnadresse</div>
+          <div class="info-value" id="wohnadresse"></div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="info-icon">🚁</div>
+        <div>
+          <div class="info-title">REGA-Gönner</div>
+          <div class="info-value ja" id="regaGoenner"></div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="info-icon">🪪</div>
+        <div>
+          <div class="info-title">Organspender</div>
+          <div class="info-value ja" id="organspender"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacts">
+      <div class="contact-card">
+        <div class="person">
+          <div class="person-icon">☻</div>
+          <div>
+            <div class="person-name" id="kontakt1Name"></div>
+            <div class="role" id="kontakt1Rolle"></div>
+          </div>
+        </div>
+        <div class="phone" id="kontakt1TelefonAnzeige"></div>
+        <a class="call" id="kontakt1Link">☎ ANRUFEN</a>
+      </div>
+
+      <div class="contact-card">
+        <div class="person">
+          <div class="person-icon">☻</div>
+          <div>
+            <div class="person-name" id="kontakt2Name"></div>
+            <div class="role" id="kontakt2Rolle"></div>
+          </div>
+        </div>
+        <div class="phone" id="kontakt2TelefonAnzeige"></div>
+        <a class="call" id="kontakt2Link">☎ ANRUFEN</a>
+      </div>
+
+      <div class="contact-card">
+        <div class="person">
+          <div class="person-icon">☻</div>
+          <div>
+            <div class="person-name" id="kontakt3Name"></div>
+            <div class="role" id="kontakt3Rolle"></div>
+          </div>
+        </div>
+        <div class="phone" id="kontakt3TelefonAnzeige"></div>
+        <a class="call" id="kontakt3Link">☎ ANRUFEN</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-left">ⓘ Diese Informationen sind vertraulich und nur für den Notfall bestimmt.</div>
+      <div class="footer-right">♥ BITTE DIESE KARTE IMMER BEI SICH TRAGEN.</div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+document.getElementById("name").textContent = daten.name;
+document.getElementById("geburtsdatum").textContent = daten.geburtsdatum;
+
+document.getElementById("blutgruppe").textContent = daten.blutgruppe;
+document.getElementById("allergien").textContent = daten.allergien;
+document.getElementById("medikamente").textContent = daten.medikamente;
+
+document.getElementById("krankenkasse").textContent = daten.krankenkasse;
+
+document.getElementById("wohnadresse").innerHTML =
+  daten.wohnadresse1 + "<br>" +
+  daten.wohnadresse2 + "<br>" +
+  daten.wohnadresse3;
+
+document.getElementById("regaGoenner").textContent = daten.regaGoenner;
+document.getElementById("organspender").textContent = daten.organspender;
+
+document.getElementById("kontakt1Name").textContent = daten.kontakt1Name;
+document.getElementById("kontakt1Rolle").textContent = "(" + daten.kontakt1Rolle + ")";
+document.getElementById("kontakt1TelefonAnzeige").textContent = "☎ " + daten.kontakt1TelefonAnzeige;
+document.getElementById("kontakt1Link").href = "tel:" + daten.kontakt1TelefonLink;
+
+document.getElementById("kontakt2Name").textContent = daten.kontakt2Name;
+document.getElementById("kontakt2Rolle").textContent = "(" + daten.kontakt2Rolle + ")";
+document.getElementById("kontakt2TelefonAnzeige").textContent = "☎ " + daten.kontakt2TelefonAnzeige;
+document.getElementById("kontakt2Link").href = "tel:" + daten.kontakt2TelefonLink;
+
+document.getElementById("kontakt3Name").textContent = daten.kontakt3Name;
+document.getElementById("kontakt3Rolle").textContent = "(" + daten.kontakt3Rolle + ")";
+document.getElementById("kontakt3TelefonAnzeige").textContent = "☎ " + daten.kontakt3TelefonAnzeige;
+document.getElementById("kontakt3Link").href = "tel:" + daten.kontakt3TelefonLink;
+
+if (daten.fotoDatei && daten.fotoDatei.trim() !== "") {
+  document.getElementById("fotoBox").innerHTML =
+    '<img src="' + daten.fotoDatei + '" alt="Foto">';
+}
+</script>
+
+</body>
+</html>
